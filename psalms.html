@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CrownWords Psalms</title>
+  <meta name="description" content="CrownWords Psalms: Word, Wealth, Worship – private, clean, Spirit-anchored declarations.">
+  <style>
+    :root{--bg:#07070b;--fg:#f2f3ff;--muted:#c0c3d9;--line:rgba(255,255,255,.10);--card:rgba(255,255,255,.06);--accent:#dcbc4c}
+    html{color-scheme:dark}
+    body{margin:0;background:linear-gradient(180deg,#07070b,#0c0f1a);color:var(--fg);font:16px/1.6 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;min-height:100vh}
+    a{color:inherit}::selection{background:rgba(231,200,96,.25)}
+    .wrap{max-width:980px;margin:0 auto;padding:22px 18px}
+    header{position:sticky;top:0;z-index:20;border-bottom:1px solid rgba(255,255,255,.06);backdrop-filter:blur(10px);
+      background:linear-gradient(180deg, rgba(10,10,14,.82), rgba(10,10,14,.62))}
+    nav{display:flex;align-items:center;gap:12px}
+    .brand{display:flex;align-items:center;gap:10px;margin-right:auto;font-weight:900;letter-spacing:.5px}
+    .nav-links{display:flex;gap:10px;flex-wrap:wrap}
+    .nav-links a{padding:8px 10px;border-radius:10px;border:1px solid transparent}
+    .nav-links a:hover{border-color:rgba(255,255,255,.12);background:rgba(255,255,255,.03)}
+    main{margin-top:26px}
+    section{margin-top:24px}
+    h1{margin:10px 0 0;font-size:clamp(22px,3vw,34px)}
+    h2{margin:0;font-size:16px;letter-spacing:.6px;text-transform:uppercase;color:var(--muted)}
+    .pill{margin-top:10px;padding:12px 14px;border-radius:18px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03)}
+    footer{margin-top:46px;padding:26px 0;border-top:1px solid rgba(255,255,255,.08);color:var(--muted);font-size:13px}
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <nav>
+      <a href="/" class="brand" aria-label="CrownWords home">CrownWords</a>
+      <div class="nav-links" aria-label="Primary navigation">
+        <a href="/">Home</a>
+        <a href="#word">Word</a>
+        <a href="#wealth">Wealth</a>
+        <a href="#worship">Worship</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>Word • Wealth • Worship</h1>
+  <p class="pill">Privacy-first & Spirit-anchored — built from your words, cleansed of unwanted identifiers by default.</p>
+
+  <section id="word">
+    <h2>WORD — Declarations</h2>
+    <div class="pill">
+      Mwoyo Omutuukuvu, Mwoyo Omutuukuvu — there is none like You.<br>
+      My soul, rest: Yahweh governs every one of my affairs. What He has written, no hand can erase; what He has blessed, no voice can curse.
+    </div>
+  </section>
+
+  <section id="wealth">
+    <h2>WEALTH — Life Pattern</h2>
+    <div class="pill">
+      My soul, rise again in hope.<br>
+      The One who reigns goes before me. He raises and establishes by double grip, and no throne not appointed by Him shall stand.
+    </div>
+  </section>
+
+  <section id="worship">
+    <h2>WORSHIP — Psalm</h2>
+    <div class="pill">
+      Mwoyo Omutuukuvu, Kitange — Teri akufaanana.<br>
+      You are the Good One, the Mighty One, my hiding place and my unending oil. My heart cannot be silent; my soul has awakened to worship.
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© <span id="year"></span> CrownWords — David Kwagala</div>
+</footer>
+<script>document.getElementById('year').textContent=new Date().getFullYear()</script>
+</body>
+</html>
