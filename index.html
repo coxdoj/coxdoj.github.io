@@ -30,6 +30,7 @@
       --shadow:0 18px 60px rgba(0,0,0,.45);
       --accent:#dcbc4c;
       --accent2:#7fe7ff;
+      --glow-hue:220;
     }
     html{color-scheme:dark}
     *{box-sizing:border-box}
@@ -119,6 +120,12 @@
     .sectionGrid .card{padding:16px;border-radius:18px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03)}
     .sectionGrid h3{margin:0 0 6px;font-size:14px}
     footer{margin-top:46px;padding:26px 0;border-top:1px solid rgba(255,255,255,.08);color:var(--muted);font-size:13px}
+
+    .glow{
+      color:hsl(var(--glow-hue),90%,60%);
+      text-shadow:0 0 18px hsla(var(--glow-hue),90%,60%,0.55);
+      transition:color 0.5s linear, text-shadow 0.5s linear;
+    }
   </style>
 </head>
 
@@ -220,6 +227,53 @@
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  (function(){
+    function setHueFromMinute(){
+      var m = new Date().getMinutes();
+      document.documentElement.style.setProperty('--glow-hue', Math.round((m/60)*360));
+    }
+
+    setHueFromMinute();
+    setInterval(setHueFromMinute, 60*1000);
+
+    document.addEventListener('DOMContentLoaded', function(){
+      var h1 = document.querySelector('h1');
+      if (h1) h1.classList.add('glow');
+
+      var d = new Date();
+      var yyyy = d.getFullYear();
+      var mm = String(d.getMonth()+1).padStart(2,'0');
+      var dd = String(d.getDate()).padStart(2,'0');
+      var url = '/content/daily/'+yyyy+'-'+mm+'-'+dd+'.json';
+
+      fetch(url, {cache:'no-store'})
+        .then(function(res){ return res.ok ? res.json() : null; })
+        .then(function(data){
+          if (!data) return;
+          var grid = document.querySelector('main .grid');
+          var html = ''+
+            '<section id="daily">'+
+            '  <h2 class="glow">Today’s CrownWord — '+data.date+'</h2>'+ 
+            '  <div class="sectionGrid">'+
+            '    <div class="card">'+
+            '      <h3>'+data.crownword.title+'</h3>'+ 
+            '      <p>'+data.crownword.line+'</p>'+ 
+            '      <p>'+data.crownword.reflection+'</p>'+ 
+            '      <h3>Reading</h3>'+ 
+            '      <ul>'+ (data.reading||[]).map(function(r){return '<li>'+r+'</li>';}).join('') + '</ul>'+ 
+            '    </div>'+ 
+            '  </div>'+ 
+            '</section>';
+          if (grid && grid.parentNode) {
+            grid.insertAdjacentHTML('afterend', html);
+          } else {
+            document.querySelector('main')?.insertAdjacentHTML('beforeend', html);
+          }
+        })
+        .catch(function(){});
+    });
+  })();
 </script>
 </body>
 </html>
